@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { SpecialPricesService } from './special-prices.service';
 import { CreateSpecialPriceDto } from './dto/create-special-price.dto';
 import { UpdateSpecialPriceDto } from './dto/update-special-price.dto';
@@ -19,16 +27,19 @@ export class SpecialPricesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.specialPricesService.findOne(+id);
+    return this.specialPricesService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSpecialPriceDto: UpdateSpecialPriceDto) {
-    return this.specialPricesService.update(+id, updateSpecialPriceDto);
+  @Put(':id')
+  update(
+    @Param('id') id: string,
+    @Body() updateSpecialPriceDto: UpdateSpecialPriceDto,
+  ) {
+    return this.specialPricesService.update(id, updateSpecialPriceDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.specialPricesService.remove(+id);
+    return this.specialPricesService.softDelete(id);
   }
 }

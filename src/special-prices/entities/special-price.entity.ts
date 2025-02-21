@@ -11,6 +11,9 @@ export class SpecialPrice {
 
   @Prop({ required: true })
   userId: string;
+
+  @Prop({ default: null })
+  deletedAt: Date;
 }
 
 export type SpecialPriceDocument = HydratedDocument<SpecialPrice>;

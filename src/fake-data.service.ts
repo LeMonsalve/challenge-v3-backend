@@ -16,7 +16,7 @@ export class FakeDataService {
     return Array.from({ length: count }).map(() => ({
       id: faker.string.uuid(),
       name: faker.commerce.productName(),
-      price: parseFloat(faker.commerce.price({ min: 10, max: 500 })),
+      price: parseFloat(faker.commerce.price({ min: 10000, max: 1000000 })),
       description: faker.commerce.productDescription(),
       imageUrl: faker.image.urlPicsumPhotos({ width: 300, height: 300 }),
       countInStock: faker.number.int({ min: 0, max: 100 }),
